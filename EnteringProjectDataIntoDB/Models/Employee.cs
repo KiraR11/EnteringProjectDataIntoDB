@@ -1,4 +1,8 @@
-﻿using System.Net.Sockets;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Net.Sockets;
 
 namespace EnteringProjectDataIntoDB.Models
 {
@@ -14,7 +18,9 @@ namespace EnteringProjectDataIntoDB.Models
             IdProjects = idProjects;
         }
 
-        public int Id { get;}
+        [Key]
+        public int Id { get; }
+        [DisplayName]
         public string Name { get;}
         public string Surname { get;}
         public string Patronymic { get;}
@@ -26,9 +32,9 @@ namespace EnteringProjectDataIntoDB.Models
             if (IdProjects.IndexOf(idProject) != -1)
                 IdProjects.Add(idProject);
             else
-                throw new Exception("Сотрудник уже записан на данных проект");
+                throw new Exception("Сотрудник уже записан на данный проект");
         }
-        public override bool Equals(object? obj)
+        /*public override bool Equals(object? obj)
         {
             if (obj is Employee)
             {
@@ -45,6 +51,6 @@ namespace EnteringProjectDataIntoDB.Models
         public override int GetHashCode()
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }
